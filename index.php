@@ -76,7 +76,6 @@
         <!-- Ajout d'un univers -->
         <div id="option_and_add_div">
           <select name="unvierse_choice" id="unvierse_choice">
-                     <option value="Xanthus" selected>Xanthus</option>
                      <?php genere_select_options(); ?>
           </select>
           <img id="add_universe_image" src="styles/images/plus.png" alt="Ajouter un univers" onclick="add_universe()"/>

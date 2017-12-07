@@ -1,33 +1,51 @@
 ﻿<?php
 
+/**
+* Genere une liste d'élément <select> pour <option> [CODE HTML]
+*/
 function genere_select_options()
 {
-    $arrayOptions = scandir('files_import/');
-    //print_r($arrayOptions);
+    $arrayOptions = scandir('files_import/serverFiles');
     foreach ($arrayOptions as $a_file)
     {
-      //echo "<script>console.log('$_afile')</script>";
-      //'\'^universe_s[0-9]{3}-[a-z]{2}.xml$\'' controleur pour s-XXX-yy
-      if(preg_match('#^universe_[a-zA-Z]*\.xml$#',$a_file))
+
+      if(preg_match('\'^universe_s[0-9]{3}\\-[a-z]{2}\\.xml$\'',$a_file))
       {
         $without_xml =  preg_split('\'.xml$\'',$a_file)[0];
         $withou_univese =   preg_split('\'^universe_\'',$without_xml)[1];
-        if($withou_univese!='Xanthus')
-          echo "<option value='$withou_univese'>$withou_univese</option>";
+        echo "<option value='$withou_univese'>$withou_univese</option>";
       }
     }
 }
 
-/*FONCTION PHP AJOUTEE AU DESSUS */
-
-
+/**
+* Récupère le fichier "universe.xml" d'un serveur.
+* @param string $string Identifiant serveur (ex : s150-fr)
+*/
 function recup_xml_file($string)
 {
   //Recupération du fichier xml associé.
+  $stringFile = "../files_import/serverFiles/universe_$string.xml";
   $files = file_get_contents("http://$string.ogame.gameforge.com/api/universe.xml");
-  echo $file;
+  if($files == false)
+    echo "Le serveur n'existe pas ou la récupétation de ses informations est impossible.";
+  else
+  {
+    //Si un fichier du même nom existe, on le supprime
+    if(file_exists($stringFile))
+      unlink($stringFile);
+
+    $servFile = fopen($stringFile,'a+');
+    fputs($servFile, $files);
+    fclose($servFile);
+  }
 }
 
+/**
+* Ajoute un serveur à l'application.
+* @param string $string Identifiant serveur.
+* @use recup_xml_file($string), charge égallement le fichier "universe.xml" du serveur.
+*/
 function add_universe($string)
 {
     $infoServ = file_get_contents("https://$string.ogame.gameforge.com/api/serverData.xml");
@@ -35,16 +53,16 @@ function add_universe($string)
       echo "Le serveur n'existe pas ou la récupétation de ses informations est impossible.";
     else
     {
-        $infoServFile = fopen("../temp/serverData_$string.xml",'a+');
+        $infoServFile = fopen("../files_import/serverInfo/serverData_$string.xml",'a+');
         fputs($infoServFile, $infoServ);
         fclose($infoServFile);
+        recup_xml_file($string);
     }
-
 }
 
 /**
 * Test l'existence d'un fichier xml passé en paramètre.
-* @param string $xml_file Le Fichier XML.
+* @param String $xml_file Le Fichier XML.
 * @return Bool - true = existe / false = n'existe pas.
 */
 function test_xml_file_exist($xml_file)
@@ -302,7 +320,6 @@ function plageE_plageSS_search($borneInfE,$borneSupE,$borneInf,$borneSup,$g,$arr
 
 }
 
-//RAJOUTER LISTE POUR CONTROLER QUAND C EST VIDE
 function decoup_position($string,$galaxie,$bornInf,$bornSup,$array)
 {
   //DEFINITION DU PROFIL

@@ -8,7 +8,7 @@ $bornInf = $_POST['bornInf'];
 $bornSup = $_POST['bornSup'];
 $universe = $_POST['universe'];
 
-$arrayAll = parse_xml_ogame('../files_import/universe_'.$universe.'.xml');
+$arrayAll = parse_xml_ogame('../files_import/serverFiles/universe_'.$universe.'.xml');
 
 //REDEFINITION DES BORNES
 if($bornInf=="NONE" && $bornSup!="NONE")
