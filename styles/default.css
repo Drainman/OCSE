@@ -1,0 +1,225 @@
+/* BALISE CLASSIQUES */
+body
+{
+  background-image: url('images/back.jpg');
+  font-family: Nasalization;
+}
+
+h1
+{
+  color:#09093B;
+  text-align: center;
+  font-family: Raliway;
+}
+
+h2
+{
+  color:#1A648A;
+  text-align: center;
+  font-family: Transformers;
+}
+
+input,select
+{
+  border:none;
+  outline-color:#1A648A;
+  border-radius: 3px;
+  padding: 2px 2px 1px 1px;
+  height: 30px;
+  margin-top: 8px;
+  font-family: Nasalization;
+}
+
+input[type='number']
+{
+  width: 70px;
+}
+
+input[type='number']:focus,
+input[type='text']:focus
+{
+
+}
+
+td
+{
+  padding: 10px;
+}
+
+
+/* LES DEUX GRANDS DIV DE LA PAGE */
+#main_div,#res_div
+{
+  margin: 5% 5% 0px 5%;
+  padding:10px 10px 10px 10px;
+  background-color: #787B7A;
+  border-radius: 10px;
+  text-align: center;
+
+  -webkit-box-shadow: 2px 2px 5px 3px #1A648A;
+  box-shadow: 2px 2px 5px 3px #1A648A;
+}
+
+#res_div
+{
+  margin-top: 20px;margin-bottom: 5%;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content: space-between;
+
+}
+
+.divs_result
+{
+  margin:10px;
+}
+
+/* Liens pour retourner au haut de la page. */
+.top_link
+{
+  position:fixed;
+  right:20px;
+  bottom:50px;
+  display:none;
+  padding:20px;
+  background:#718DA5;
+  -moz-border-radius:40px;
+  -webkit-border-radius:40px;
+  border-radius:20px;
+  opacity:0.9;
+  z-index:2000;
+  text-decoration: none;
+  color:white;
+}
+
+/* div et tab concernant le formulaire */
+#formulaire,#tab_form
+{
+  width: auto;
+  font-size: 18px;
+  text-align: center;
+  margin:auto;
+}
+
+#tab_form
+{
+  background-color:#162756;
+  padding: 10px;
+  border-radius: 8px;
+  color:white;
+}
+
+
+#top_tr td
+{
+  width: 250px;
+}
+
+#tab_form tr td
+{
+  vertical-align:middle;
+  text-align:center;
+}
+
+#search_button
+{
+  text-align: center;
+  font-size: 19px;
+  width:80px;
+  height:45px;
+  background-color: #162756;
+  color:white;
+}
+
+#search_button:hover
+{
+  background-color: #1A648A;
+}
+
+
+/* ICON HELP */
+.help_icon
+{
+  width:25px;
+  height: 25px;
+  margin-left: 5px;
+  cursor:help;
+}
+
+
+/*  BAS DE PAGE */
+
+ #div_position,#force_actu_div
+ {
+   display: flex;
+   justify-content:center;
+   align-items:center;
+ }
+
+
+/* FOOTER DU MAIN DIV */
+
+#foot_div
+{
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+}
+
+#add_universe_image
+{
+  width: 30px;
+  height: 30px;
+  margin-left: 5px;
+}
+
+ #option_and_add_div
+ {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ }
+
+ #force_actu_div
+ {
+    font-size: 15px;
+ }
+
+ /* INFO BULLE*/
+ .infobulle {
+ position: relative;
+ }
+
+ .infobulle-texte {
+ position: absolute;
+ bottom: 0px;
+ left: 100px;
+ width: 200px;
+ color: #000000;
+ padding: 5px;
+ font-size: 10px;
+ background-color: #787B7A;
+ border: 1px solid #162756;
+ }
+
+
+/* FONTS */
+@font-face {
+    font-family: Cracked Code;
+    src: url("fonts/Cracked_Code.ttf");
+}
+
+@font-face {
+    font-family: Nasalization;
+    src: url("fonts/Nasalization.ttf");
+}
+
+@font-face {
+    font-family: Raliway;
+    src: url("fonts/Railway_to_Hells.ttf");
+}
+
+@font-face {
+    font-family:Transformers;
+    src: url("fonts/Transformers.ttf");
+}
